@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain UI</title>
+</head>
+<body>
+    <h1>Blockchain</h1>
+    <form action="/add_transaction" method="POST">
+        <label for="sender">Sender:</label>
+        <input type="text" id="sender" name="sender" required><br>
+        <label for="receiver">Receiver:</label>
+        <input type="text" id="receiver" name="receiver" required><br>
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount" required><br>
+        <button type="submit">Add Transaction</button>
+    </form>
+    <hr>
+    <h2>Blockchain Contents</h2>
+    <ul>
+        {% for block in blockchain.chain %}
+        <li>
+            <p><strong>Block {{ block.index }}</strong></p>
+            <p>Hash: {{ block.hash }}</p>
+            <p>Previous Hash: {{ block.previous_hash }}</p>
+            <p>Transactions: {{ block.transactions }}</p>
+            <p>Merkle Root: {{ block.merkle_root }}</p>
+            <p>Nonce: {{ block.nonce }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
